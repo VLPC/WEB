@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
+"""
 INSTALLED_APPS = [
     #'django.contrib.admin',
     #'django.contrib.auth',
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'qa',
     'ask',
 ]
-"""
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
