@@ -1,12 +1,12 @@
 from django.conf.urls import url
-from . import views
+from qa.views import test
 
 urlpatterns = [
-	url(r'^$', views.test),
-	url(r'^login/', views.test),
-	url(r'^signup/', views.test),
-	url(r'^question/(?P<index>[d+])', views.test),
-	url(r'^ask/', views.test),
-	url(r'^popular/', views.test),
-	url(r'^new/', views.test),
+	url(r'^$', test),
+	url(r'^login/', test),
+	url(r'^signup/', test),
+	url(r'^question/(?P<index>[d+])', test),
+	url(r'^ask/', test),
+	url(r'^popular/', test),
+	url(r'^new/', test),
 ]
