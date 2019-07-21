@@ -2,7 +2,7 @@ from django.conf.urls import url
 from qa.views import test
 
 urlpatterns = [
-	url(r'^/', test, name = 'test'),
+	url(r'^$', test, name = 'test'),
 	url(r'^login/', test, name = 'test'),
 	url(r'^signup/', test, name = 'test'),
 	url(r'^question/(?P<index>\d+)/', test, name = 'test'),
