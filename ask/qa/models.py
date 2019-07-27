@@ -13,7 +13,7 @@ class QuestionManag(models.Manag):
 		return self.order_by('-rating')
 
 class Question(models.Model):
-	objects = QuestionManager()
+	objects = QuestionManag()
 	title = models.CharField(default="", max_length=1024)
 	text = models.TextField(default="")
 	added_at = models.DateField(null=True)
