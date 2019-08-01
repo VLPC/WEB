@@ -15,7 +15,7 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def new_questions(request):
-	qs = Question.objects.new(Question.objects.all())
+	qs = new(Question.objects.all())
 	try:
 		limit = int(request.GET.get('limit', 10))
 	except:
