@@ -15,7 +15,7 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def new_questions(request):
-	qs = Question.object.new(Question.object.all())
+	qs = Question.objects.new(Question.objects.all())
 	try:
 		limit = int(request.GET.get('limit', 10))
 	except:
@@ -35,7 +35,7 @@ def new_questions(request):
 	)
 
 def popular_questions(request):
-	qs = Question.object.popular(Question.object.all())
+	qs = Question.objects.popular(Question.objects.all())
 	try:
 		limit = int(request.GET.get('limit', 10))
 	except:
