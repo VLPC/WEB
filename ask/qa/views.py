@@ -55,7 +55,6 @@ def popular_questions(request):
 	)
 
 def question_details(request, id):
-	
 	try:
 		qs = Question.objects.get(id = id)
 	except Question.DoesNotExist:
