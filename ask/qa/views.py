@@ -15,7 +15,7 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def new_questions(request):
-	qs = QuestionManager.new(Question.objects.all())
+	qs = new(Question.objects.all())
 	try:
 		limit = int(request.GET.get('limit', 10))
 	except:
@@ -28,14 +28,14 @@ def new_questions(request):
 	paginator.baseurl = reverse('new-questions') + '?page='
 	page = paginator.page(page)
 	return render(request, 'new_questions.html',
-		{'title' : qs,
+		{'title' : qs.title,
 		'questions' : page.object_list,
 		'paginator' : paginator,
 		'page' : page,}
 	)
 
 def popular_questions(request):
-	qs = QuestionManager.popular(Question.objects.all())
+	qs = QuestionManager.objects.popular(Question.objects.all())
 	try:
 		limit = int(request.GET.get('limit', 10))
 	except:
@@ -48,7 +48,7 @@ def popular_questions(request):
 	paginator.baseurl = reverse('popular-questions') + '?page='
 	page = paginator.page(page)
 	return render(request, 'popular_questions.html',
-		{'title' : qs,
+		{'title' : qs.title,
 		'questions' : page.object_list,
 		'paginator' : paginator,
 		'page' : page,}
