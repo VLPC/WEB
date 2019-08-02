@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from qa.models import Question, Answer, QuestionManager
+from qa.models import Question, Answer
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 
