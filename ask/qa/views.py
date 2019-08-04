@@ -15,7 +15,7 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def new_questions(request):
-	qs = Question.objects.all().order_by('-id')
+	qs = Question.objects.all().order_by('-added_at')
 	try:
 		page = int(request.GET.get('page', 1))
 	except ValueError:
