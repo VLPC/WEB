@@ -15,7 +15,7 @@ class Question(models.Model):
 	likes = models.ManyToManyField(User, related_name='likes_set')
 	
 	def get_url(self):
-        	return reverse('question', kwargs={"id": self.id})
+        	return reverse('new-questions', kwargs={"id": self.id})
 
 class Answer(models.Model):
 	text = models.TextField(default="")
