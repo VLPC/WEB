@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }} questions</title>
+    <title>{{title}} questions</title>
 </head>
 <body>
-    <h1>{{ title }} questions</h1>
+    <h1>{{title}} questions</h1>
     {% for question in qs %}
-        <p> {{question.title}},
-            <a href="{{ question.get_url }}">{{ question }}</a>
-        </p>
+        <p><a href="{{question.get_url}}">{{question.title}}</a></p>
     {% endfor %}
 </body>
 </html>
