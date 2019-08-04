@@ -19,8 +19,6 @@ def paginate(request, qs):
         limit = int(request.GET.get('limit', 10))
     except ValueError:
         limit = 10
-    if limit > 100:
-        limit = 10
 
     try:
         page = int(request.GET.get('page', 1))
@@ -36,7 +34,7 @@ def paginate(request, qs):
     return page, paginator
 
 def new_questions(request):
-    qs = Question.objects.all().order_by('-id')
+    qs = Question.objects.all().order_by('-added_at')
     page, paginator = paginate(request, qs)
     paginator.baseurl = reverse('new-questions') + '?page='
 
