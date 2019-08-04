@@ -16,7 +16,7 @@ def test(request, *args, **kwargs):
 
 def new_questions(request):
 	qs = Question.objects.all()
-	qs = qs.order_by('-added_at')
+	qs = qs.order_by('-id')
 	try:
 		limit = int(request.GET.get('limit', 10))
 	except:
