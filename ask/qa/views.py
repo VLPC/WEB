@@ -37,12 +37,12 @@ def paginate(request, qs):
 
 
 def new_questions(request):
-    qs = Question.objects.all()
-    qs = qs.order_by('-id')
+    qs = Question.objects.all().order_by('-id')
     page, paginator = paginate(request, qs)
     paginator.baseurl = reverse('new-questions') + '?page='
 
     return render(request, 'new_questions.html', {
+	'title' : 'New',
         'questions': page.object_list,
         'page': page,
         'paginator': paginator,
@@ -50,17 +50,9 @@ def new_questions(request):
 
 def popular_questions(request):
 	qs = Question.objects.all().order_by('-rating')
-	try:
-		limit = int(request.GET.get('limit', 10))
-	except:
-		limit = 10
-	try:
-		page = int(request.GET.get('page', 1))
-	except:
-		page = 1
-	paginator = Paginator(qs, limit)
+	page, paginator = paginate(request, qs)
 	paginator.baseurl = reverse('popular-questions') + '?page='
-	page = paginator.page(page)
+	
 	return render(request, 'popular_questions.html',
 		{'title' : 'Popular',
 		'questions' : page.object_list,
@@ -68,14 +60,14 @@ def popular_questions(request):
 		'page' : page,}
 	)
 
-def question_details(request, id):
+def question_details(request, num):
 	try:
-		qs = Question.objects.get(id = id)
+		qs = Question.objects.get(id = num)
 	except Question.DoesNotExist:
 		raise Http404
 
 	return render(request, 'question_details.html',
 		{'title' : 'Details',
-		'text' : qs.text,
+		'text' : qs,
 		'answers' : qs.answer_set.all()}
 	)
