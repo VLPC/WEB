@@ -38,7 +38,7 @@ def paginate(request, qs):
 
 def new_questions(request):
     qs = Question.objects.all()
-    qs = qs.order_by('-added_at')
+    qs = qs.order_by('-id')
     page, paginator = paginate(request, qs)
     paginator.baseurl = reverse('new-questions') + '?page='
 
