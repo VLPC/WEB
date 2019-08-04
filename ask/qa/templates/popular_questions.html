@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }} questions</title>
-</head>
-<body>
-    <h1>{{ title }} questions</h1>
-    {% for question in qs %}
-        <p><a href="{{ question.get_url }}">{{ question }}</a></p>
-    {% endfor %}
-</body>
-</html>
+{% extends "list.html" %}
 
+{% block title %}Popular // Ask Pupkin{% endblock %}
+
+{% block question_view_title %}<h1>Popular Questions</h1>{% endblock %}
+
+{% block question_title %}
+  <h2><a href="{{ question.get_url }}">{{ question.title }} ({{ question.rating }})</a></h2>
+{% endblock %}
