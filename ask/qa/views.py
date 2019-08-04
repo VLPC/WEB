@@ -43,8 +43,8 @@ def new_questions(request):
     return render(request, 'new_questions.html', {
 	'title' : 'New',
         'questions': page.object_list,
+	'paginator': paginator,
         'page': page,
-        'paginator': paginator,
     })
 
 def popular_questions(request):
