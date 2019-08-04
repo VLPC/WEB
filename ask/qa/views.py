@@ -15,17 +15,14 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def new_questions(request):
-	qs = Question.objects.all()
-	qs = qs.order_by('-id')
-	try:
-		limit = int(request.GET.get('limit', 10))
-	except:
-		limit = 10
+	qs = Question.objects.all().order_by('-id')
 	try:
 		page = int(request.GET.get('page', 1))
-	except:
+	except ValueError:
 		page = 1
-	paginator = Paginator(qs, limit)
+	except TypeError:
+        	page = 1
+	paginator = Paginator(qs, 10)
 	paginator.baseurl = reverse('new-questions') + '?page='
 	page = paginator.page(page)
 	return render(request, 'new_questions.html',
