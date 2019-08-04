@@ -16,7 +16,10 @@ def test(request, *args, **kwargs):
 
 def new_questions(request):
 	qs = Question.objects.all().order_by('-added_at')
-	page = request.GET.get('page')
+	try:
+		page = int(request.GET.get('page', 1))
+	except ValueError:
+		raise Http404
 	paginator = Paginator(qs, 10)
 	try:
 		page = paginator.page(page)
@@ -32,7 +35,10 @@ def new_questions(request):
 
 def popular_questions(request):
 	qs = Question.objects.all().order_by('-rating')
-	page = request.GET.get('page')
+	try:
+		page = int(request.GET.get('page', 1))
+	except ValueError:
+		raise Http404
 	paginator = Paginator(qs, 10)
 	try:
 		page = paginator.page(page)
