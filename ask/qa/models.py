@@ -15,7 +15,8 @@ class Question(models.Model):
 	likes = models.ManyToManyField(User, related_name='likes_set')
 	
 	def get_url(self):
-        	return reverse('new-questions', kwargs={"id": self.id})
+        	return "/question/{}/".format(self.id)
+	
 	def __unicode__(self) :
     		return self.title
 
