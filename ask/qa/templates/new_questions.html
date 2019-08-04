@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}} questions</title>
-</head>
-<body>
-    <h1>{{title}} questions</h1>
-    {% for question in qs %}
-        <p><a href="{{question.get_url}}">{{question.title}}</a></p>
-    {% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
 
+{% block title %} Ask Pupkin {% endblock %}
+
+{% block content %}
+  {% block question_view_title %}<h1>New Questions</h1>{% endblock %}
+  {% for question in questions %}
+    {% block question_title %}
+      <h2><a href="{{ question.get_url }}">{{ question.title }}</a></h2>
+    {% endblock %}
+  {% endfor %}
+
+  {% include "pagination.html" %}
+{% endblock %}
