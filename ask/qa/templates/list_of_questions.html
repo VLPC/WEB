@@ -1,3 +1,14 @@
-{% for question in questions %}
-    <a href="{{question.get_url}}">{{question}}</a>
-{% endfor %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quest</title>
+</head>
+<body>
+    <h1>quest</h1>
+    {% for question in questions %}
+        <a href="{{question.get_url}}">{{question}}</a>
+    {% endfor %}
+</body>
+</html>
