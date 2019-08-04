@@ -35,7 +35,6 @@ def paginate(request, qs):
         page = paginator.page(paginator.num_pages)
     return page, paginator
 
-
 def new_questions(request):
     qs = Question.objects.all().order_by('-id')
     page, paginator = paginate(request, qs)
