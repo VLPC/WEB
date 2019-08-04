@@ -31,6 +31,8 @@ def new_questions(request):
 	return render(request, 'new_questions.html', {
 	'title' : 'New',
         'questions': page.object_list,
+	'page': page,
+	'paginator': paginator,
     })
 
 def popular_questions(request):
@@ -47,8 +49,10 @@ def popular_questions(request):
 	paginator.baseurl = reverse('popular-questions') + '?page='
 	
 	return render(request, 'popular_questions.html',
-		      {'title' : 'Popular',
-		       'questions' : page.object_list,}
+		{'title' : 'Popular',
+		'questions' : page.object_list,
+		'page': page,
+		'paginator': paginator,}
 	)
 
 def question_details(request, num):
