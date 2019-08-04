@@ -22,6 +22,9 @@ class Question(models.Model):
 	def get_url2(self):
 		return reverse('popular-questions', kwargs={'pk': self.pk})
 	
+	def get_url3(self):
+		return reverse('questions-details', kwargs={'pk': self.pk})
+	
 	def __unicode__(self) :
     		return self.title
 
