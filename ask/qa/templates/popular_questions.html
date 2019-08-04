@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>{{ title }} questions</h1>
-    {% for question in qs %}
+    {% for question in questions %}
         <a href="{{ question.get_url }}">{{ question }}</a>
     {% endfor %}
 </body>
