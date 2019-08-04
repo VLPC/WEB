@@ -29,11 +29,10 @@ def new_questions(request):
 	paginator.baseurl = reverse('new-questions') + '?page='
 
 	return render(request, 'new_questions.html', {
-	'title' : 'New',
         'questions': page.object_list,
 	'page': page,
-	'paginator': paginator,
-    })
+	'paginator': paginator}
+	)
 
 def popular_questions(request):
 	qs = Question.objects.all().order_by('-rating')
@@ -49,10 +48,9 @@ def popular_questions(request):
 	paginator.baseurl = reverse('popular-questions') + '?page='
 	
 	return render(request, 'popular_questions.html',
-		{'title' : 'Popular',
-		'questions' : page.object_list,
+		{'questions' : page.object_list,
 		'page': page,
-		'paginator': paginator,}
+		'paginator': paginator}
 	)
 
 def question_details(request, num):
@@ -62,7 +60,5 @@ def question_details(request, num):
 		raise Http404
 
 	return render(request, 'question_details.html',
-		{'title' : 'Details',
-		'text' : qs,
-		'answers' : qs.answer_set.all()}
+		{'questions' : qs}
 	)
