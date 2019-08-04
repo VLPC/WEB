@@ -15,17 +15,17 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def new_questions(request):
-    qs = Question.objects.all().order_by('-added_at')
-    page = request.GET.get('page')
-    paginator = Paginator(qs, 10)
-    try:
-        page = paginator.page(page)
-    except EmptyPage:
-        page = paginator.page(paginator.num_pages)
+	qs = Question.objects.all().order_by('-added_at')
+	page = request.GET.get('page')
+	paginator = Paginator(qs, 10)
+	try:
+		page = paginator.page(page)
+	except EmptyPage:
+		page = paginator.page(paginator.num_pages)
     
-    paginator.baseurl = reverse('new-questions') + '?page='
+	paginator.baseurl = reverse('new-questions') + '?page='
 
-    return render(request, 'new_questions.html', {
+	return render(request, 'new_questions.html', {
 	'title' : 'New',
         'questions': page.object_list,
     })
@@ -34,16 +34,15 @@ def popular_questions(request):
 	qs = Question.objects.all().order_by('-rating')
 	page = request.GET.get('page')
 	paginator = Paginator(qs, 10)
-        try:
-        	page = paginator.page(page)
-        except EmptyPage:
-        	page = paginator.page(paginator.num_pages)
+	try:
+		page = paginator.page(page)
+	except EmptyPage:
+		page = paginator.page(paginator.num_pages)
 	paginator.baseurl = reverse('popular-questions') + '?page='
 	
 	return render(request, 'popular_questions.html',
-		{'title' : 'Popular',
-		'questions' : page.object_list,
-		}
+		      {'title' : 'Popular',
+		       'questions' : page.object_list,}
 	)
 
 def question_details(request, num):
