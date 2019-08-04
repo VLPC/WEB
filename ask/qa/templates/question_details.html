@@ -7,8 +7,7 @@
 <body>
     <h1>{{ title }} questions</h1>
     {% for question in qs %}
-        <p><a href="{{ question.get_url }}">{{ question }}</a></p>
+        <h2><a href="{{ question.get_url }}">{{ question }}</a></h2>
     {% endfor %}
 </body>
 </html>
-
