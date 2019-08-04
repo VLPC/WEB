@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }} questions</title>
-</head>
-<body>
-    <h1>{{ title }} questions</h1>
+<h1>{{qs.title}}</h1>
     {% for question in questions %}
-        <h1>question.title</h1>
-        <a href="{{paginator.baseurl}}{{question.id}}">{{ question }}</a>
+        <a href="{{question.get_url}}">{{question}}</a>
     {% endfor %}
-</body>
-</html>
