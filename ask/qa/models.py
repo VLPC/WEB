@@ -16,10 +16,15 @@ class Question(models.Model):
 	
 	def get_url(self):
         	return reverse('new-questions', kwargs={"id": self.id})
+	def __unicode__(self) :
+    		return self.title
 
 class Answer(models.Model):
 	text = models.TextField(default="")
 	added_at = models.DateField(auto_now_add=True)
 	question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL)
 	author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+	
+	def __unicode__(self) :
+		return 'Answer by {}'.format(self.author)
 
