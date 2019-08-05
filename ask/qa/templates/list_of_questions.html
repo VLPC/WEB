@@ -1,5 +1,14 @@
-{% block content %}
-    {% for question in questions %}
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>Ask</title>
+  </head>
+  <body>
+    {% block content %}
+      {% for question in questions %}
         <p><a href="/question/{{ question.id }}/">{{question}}</a></p>
-    {% endfor %}
-{% endblock %}
+      {% endfor %}
+    {% endblock %}
+  </body>
+</html>
