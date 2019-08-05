@@ -7,7 +7,7 @@
 <body>
     <h1>quest</h1>
     {% for question in questions %}
-        <a href="{{question.get_url}}">{{question}}</a>
+        <a href="{{qa/?page=}}{{question.id}}">{{question}}</a>
     {% endfor %}
 </body>
 </html>
