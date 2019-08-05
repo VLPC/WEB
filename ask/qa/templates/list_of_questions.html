@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>quest</title>
-</head>
-<body>
-    <h1>quest</h1>
+{% block content %}
     {% for question in questions %}
-        <a href="/question/{{ question.id }}/">{{question}}</a>
+        <p><a href="/question/{{ question.id }}/">{{question}}</a></p>
     {% endfor %}
-</body>
-</html>
+{% endblock %}
