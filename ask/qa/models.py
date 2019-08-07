@@ -16,8 +16,6 @@ class Question(models.Model):
 	author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 	likes = models.ManyToManyField(User, related_name='likes_set')
 	
-	class Meta:
-        	ordering = ('-added_at',)
 	
 	def get_url(self):
 		return reverse('question-details', kwargs={'pk': self.pk})
