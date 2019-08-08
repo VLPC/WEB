@@ -3,4 +3,5 @@
   {% for question in questions %}
     <h3><a href="/question/{{question.id}}/">{{question.title}}</a></h3>
   {% endfor %}
+  {% include "paginator.html" %}
 {% endblock %}
