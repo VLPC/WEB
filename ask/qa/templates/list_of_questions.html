@@ -7,7 +7,7 @@
   <body>
     {% block content %}
       {% for question in questions %}
-        <p><a href="/question/{{ question.id }}/">{{question}}</a></p>
+        <a href="/question/{{ question.id }}/">{{question}}</a>
       {% endfor %}
     {% endblock %}
   </body>
