@@ -20,7 +20,7 @@ class Question(models.Model):
 	def get_url(self):
 		return reverse('question-details', kwargs={'pk': self.pk})
 	
-	def __unicode__(self) :
+	def __str__(self) :
     		return self.title
 
 class Answer(models.Model):
@@ -29,6 +29,6 @@ class Answer(models.Model):
 	question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL)
 	author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 	
-	def __unicode__(self) :
+	def __str__(self) :
 		return 'Answer by {}'.format(self.author)
 
