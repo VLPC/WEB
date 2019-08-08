@@ -16,17 +16,18 @@ def test(request, *args, **kwargs):
 
 def new_questions(request):
 	qs = Question.objects.all().order_by('-added_at')
+	
 	try:
 		page = int(request.GET.get('page', 1))
 	except ValueError:
 		raise Http404
+	
 	paginator = Paginator(qs, 10)
+	
 	try:
 		page = paginator.page(page)
 	except EmptyPage:
 		page = paginator.page(paginator.num_pages)
-    
-	paginator.baseurl = reverse('new-questions') + '?page='
 
 	return render(request, 'list_of_questions.html', {
         'questions': qs,
@@ -36,16 +37,18 @@ def new_questions(request):
 
 def popular_questions(request):
 	qs = Question.objects.all().order_by('-rating')
+	
 	try:
 		page = int(request.GET.get('page', 1))
 	except ValueError:
 		raise Http404
+	
 	paginator = Paginator(qs, 10)
+	
 	try:
 		page = paginator.page(page)
 	except EmptyPage:
 		page = paginator.page(paginator.num_pages)
-	paginator.baseurl = reverse('popular-questions') + '?page='
 	
 	return render(request, 'list_of_questions.html',
 		{'questions' : qs,
@@ -58,7 +61,9 @@ def question_details(request, num):
 		qs = Question.objects.get(id = num)
 	except Question.DoesNotExist:
 		raise Http404
+	
 	answers = qs.answer_set.all()
+	
 	return render(request, 'question_details.html',
 		{'questions' : qs,
 		'answers' : answers}
