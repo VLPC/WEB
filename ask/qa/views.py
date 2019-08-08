@@ -18,18 +18,25 @@ def new_questions(request):
 	qs = Question.objects.all().order_by('-added_at')
 	
 	try:
+		limit = int(request.GET.get('limit', 10))
+	except ValueError:
+		limit = 10
+	if limit > 100:
+		limit = 10
+	
+	try:
 		page = int(request.GET.get('page', 1))
 	except ValueError:
 		raise Http404
 	
-	paginator = Paginator(qs, 10)
+	paginator = Paginator(qs, limit)
 	
 	try:
 		page = paginator.page(page)
 	except EmptyPage:
 		page = paginator.page(paginator.num_pages)
 
-	return render(request, 'list_of_questions.html', {
+	return render(request, 'new.html', {
         'questions': qs,
 	'page': page,
 	'paginator': paginator}
@@ -39,18 +46,25 @@ def popular_questions(request):
 	qs = Question.objects.all().order_by('-rating')
 	
 	try:
+		limit = int(request.GET.get('limit', 10))
+	except ValueError:
+		limit = 10
+	if limit > 100:
+		limit = 10
+	
+	try:
 		page = int(request.GET.get('page', 1))
 	except ValueError:
 		raise Http404
 	
-	paginator = Paginator(qs, 10)
+	paginator = Paginator(qs, limit)
 	
 	try:
 		page = paginator.page(page)
 	except EmptyPage:
 		page = paginator.page(paginator.num_pages)
 	
-	return render(request, 'list_of_questions.html',
+	return render(request, 'popular.html',
 		{'questions' : qs,
 		'page': page,
 		'paginator': paginator}
@@ -64,7 +78,7 @@ def question_details(request, num):
 	
 	answers = qs.answer_set.all()
 	
-	return render(request, 'question_details.html',
+	return render(request, 'details.html',
 		{'questions' : qs,
 		'answers' : answers}
 	)
