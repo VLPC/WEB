@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>quest</title>
-</head>
-<body>
-    <h1>quest</h1>
-    <h1>{{qs.title}}</h1>
-    <h1>{{qs.text}}</h1>
-    {% for answer in answers %}
-        <h1>{{answer.text}}</h1>
-    {% endfor %}
-</body>
-</html>
 {% extends "main.html" %}
 {% block content %}
-    <h3>{{question.title}}</h3>
+    <h3>{{questions.title}}</h3>
+    <h3>{{questions.text}}</h3>
+    {% for answer in answers %}
+        <h1>{{answer.title}}</h1>
+    {% endfor %}
 {% endblock %}
