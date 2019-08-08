@@ -15,7 +15,7 @@ def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
 def new_questions(request):
-	qs = Question.objects.all().order_by('-added_at')
+	qs = Question.objects.all().order_by('-id')
 	
 	try:
 		limit = int(request.GET.get('limit', 10))
