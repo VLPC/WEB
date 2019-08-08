@@ -6,7 +6,7 @@ urlpatterns = [
 	url(r'^popular/', views.popular_questions, name='popular-questions'),
 	url(r'^login/', views.test, name = 'test'),
 	url(r'^signup/', views.test, name = 'test'),
-	url(r'^question/(?P<pk>\d+)$', views.question_details, name = 'question-details'),
+	url(r'^question/(?P<pk>\d+)/$', views.question_details, name = 'question-details'),
 	url(r'^ask/', views.test, name = 'test'),
 	url(r'^new/', views.test, name = 'test'),
 ]
