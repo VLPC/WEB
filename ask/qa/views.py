@@ -30,6 +30,7 @@ def new_questions(request):
 		raise Http404
 	
 	paginator = Paginator(qs, limit)
+	paginator.baseurl = reverse('new-questions') + '?page='
 	
 	try:
 		page = paginator.page(page)
@@ -58,6 +59,7 @@ def popular_questions(request):
 		raise Http404
 	
 	paginator = Paginator(qs, limit)
+	paginator.baseurl = reverse('popular-questions') + '?page='
 	
 	try:
 		page = paginator.page(page)
