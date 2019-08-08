@@ -16,10 +16,6 @@ class Question(models.Model):
 	author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 	likes = models.ManyToManyField(User, related_name='likes_set')
 	
-	
-	def get_url(self):
-		return reverse('question-details', kwargs={'pk': self.pk})
-	
 	def __str__(self) :
     		return self.title
 
@@ -30,5 +26,5 @@ class Answer(models.Model):
 	author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 	
 	def __str__(self) :
-		return 'Answer by {}'.format(self.author)
+		return self.title
 
