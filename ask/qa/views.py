@@ -72,9 +72,9 @@ def popular_questions(request):
 		'paginator': paginator}
 	)
 
-def question_details(request, num):
+def question_details(request, pk):
 	try:
-		qs = Question.objects.get(pk = num)
+		qs = Question.objects.get(id = pk)
 	except Question.DoesNotExist:
 		raise Http404
 	
