@@ -30,18 +30,13 @@ def new_questions(request):
 		raise Http404
 	
 	paginator = Paginator(qs, limit)
-	paginator.baseurl = reverse('new-questions') + '?page='
 	
 	try:
 		page = paginator.page(page)
 	except EmptyPage:
 		page = paginator.page(paginator.num_pages)
 
-	return render(request, 'new.html', {
-        'questions': page.object_list,
-	'page': page,
-	'paginator': paginator}
-	)
+	return render(request, 'new.html', {'page': page})
 
 def popular_questions(request):
 	qs = Question.objects.all().order_by('-rating')
@@ -59,18 +54,13 @@ def popular_questions(request):
 		raise Http404
 	
 	paginator = Paginator(qs, limit)
-	paginator.baseurl = reverse('popular-questions') + '?page='
 	
 	try:
 		page = paginator.page(page)
 	except EmptyPage:
 		page = paginator.page(paginator.num_pages)
 	
-	return render(request, 'popular.html',
-		{'questions' : page.object_list,
-		'page': page,
-		'paginator': paginator}
-	)
+	return render(request, 'popular.html',{'page': page,})
 
 def question_details(request, pk):
 	try:
