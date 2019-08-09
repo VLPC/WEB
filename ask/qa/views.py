@@ -38,7 +38,7 @@ def new_questions(request):
 		page = paginator.page(paginator.num_pages)
 
 	return render(request, 'new.html', {
-        'questions': qs,
+        'questions': page.object_list,
 	'page': page,
 	'paginator': paginator}
 	)
@@ -67,7 +67,7 @@ def popular_questions(request):
 		page = paginator.page(paginator.num_pages)
 	
 	return render(request, 'popular.html',
-		{'questions' : qs,
+		{'questions' : page.object_list,
 		'page': page,
 		'paginator': paginator}
 	)
@@ -81,6 +81,6 @@ def question_details(request, num):
 	answers = qs.answer_set.all()
 	
 	return render(request, 'details.html',
-		{'questions' : qs,
+		{'questions' : page.object_list,
 		'answers' : answers}
 	)
