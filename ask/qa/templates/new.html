@@ -1,6 +1,6 @@
 {% extends "main.html" %}
 {% block content %}
-  {% for question in questions %}
+  {% for question in page.object_list %}
     <h3><a href="/question/{{question.id}}/">{{question.title}}</a></h3>
   {% endfor %}
   {% include "paginator.html" %}
