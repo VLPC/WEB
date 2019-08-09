@@ -81,6 +81,6 @@ def question_details(request, num):
 	answers = qs.answer_set.all()
 	
 	return render(request, 'details.html',
-		{'questions' : page.object_list,
+		{'questions' : qs,
 		'answers' : answers}
 	)
