@@ -74,7 +74,7 @@ def popular_questions(request):
 
 def question_details(request, num):
 	try:
-		qs = Question.objects.get(id = num)
+		qs = Question.objects.get(pk = num)
 	except Question.DoesNotExist:
 		raise Http404
 	
