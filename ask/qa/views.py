@@ -33,9 +33,9 @@ def new_questions(request):
 	paginator.baseurl = reverse('new-questions') + '?page='
 	
 	try:
-		page = paginator.get_page(page)
+		page = paginator.page(page)
 	except EmptyPage:
-		page = paginator.get_page(paginator.num_pages)
+		page = paginator.page(paginator.num_pages)
 
 	return render(request, 'new.html', {
         'questions': qs,
