@@ -1,6 +1,6 @@
  <div>
     <ul class="pagination">
-    {% for p in paginator.page_range %}
+    {% for p in page.paginator.page_range %}
       {% if p == page.number %}
       <li class="current"><a href="/?page={{p}}/">{{p}}</a><li>
       {% else %}
