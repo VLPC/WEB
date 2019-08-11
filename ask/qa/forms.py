@@ -4,24 +4,22 @@ class AskForm(forms.Form):
   title = forms.CharField(max_length = 120)
   text = forms.CharField(widget = forms.Textarea)
   
-  def clean_text(self):
-    text = self.cleaned_data['text']
-    return text
+  def clean(self):
+    pass
   
   def save(self):
-    question = Question(self.cleaned_data)
+    question = Question(**self.cleaned_data)
     question.save()
     return question
 
 AnswerForm
   text = forms.CharField(widget = forms.Textarea)
-  question = 
+  question = forms.IntegerField(widget=forms.HiddenInput)
   
-  def clean_text(self):
-    text = self.cleaned_data['text']
-    return text
+  def clean(self):
+    pass
   
   def save(self):
-    answer = Answer(self.cleaned_data)
+    answer = Answer(**self.cleaned_data)
     answer.save()
     return answer
