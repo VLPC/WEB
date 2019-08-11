@@ -63,6 +63,8 @@ def popular_questions(request):
 	return render(request, 'popular.html',{'page': page,})
 
 def question_details(request, pk):
+	if request.method == 'POST':
+		
 	try:
 		qs = Question.objects.get(id = pk)
 	except Question.DoesNotExist:
@@ -76,4 +78,12 @@ def question_details(request, pk):
 	)
 
 def ask(request):
-	
+	if request.method == 'POST':
+		form = AskForm(request.POST)
+		question = form.save()
+		url = "/question/"
+		return HttpResponseRedirect(url)
+			
+	else:
+		form = AskForm()
+		return render(request, 'question_add.html', {'form' : form})
