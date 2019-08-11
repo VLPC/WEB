@@ -78,11 +78,12 @@ def question_details(request, pk):
 			return HttpResponseRedirect(url)
 			
 	else: 
-		form = AnswerForm()
-		return render(request, 'details.html',
-		{'questions' : qs,
-		'answers' : answers,
-		'form' : form})
+		form = AnswerForm(initial = {'question': pk})
+	
+	return render(request, 'details.html',
+		      {'questions' : qs,
+		       'answers' : answers,
+		       'form' : form})
 
 def ask(request):
 	if request.method == 'POST':
