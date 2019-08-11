@@ -20,7 +20,7 @@ class Question(models.Model):
     		return self.title
 	
 	def get_url(self):
-		return reverse('question-detail', kwargs={'pk': self.pk})
+		return reverse('question-details', kwargs={'pk': self.pk})
 
 class Answer(models.Model):
 	text = models.TextField(default="")
@@ -32,4 +32,4 @@ class Answer(models.Model):
 		return self.title
 	
 	def get_url(self):
-		return reverse('question-detail', kwargs={'pk': self.pk})
+		return reverse('question-details', kwargs={'pk': self.pk})
