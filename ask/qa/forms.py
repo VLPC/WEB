@@ -5,7 +5,7 @@ class AskForm(forms.Form):
   text = forms.CharField(widget=forms.Textarea)
   
   def save(self):
-    question = Question(self.cleaned_data)
+    question = Question.objects.create(self.cleaned_data)
     question.save()
     return question
 
@@ -14,6 +14,6 @@ AnswerForm(forms.Form):
   question = forms.IntegerField(widget=forms.HiddenInput)
   
   def save(self):
-    answer = Answer(self.cleaned_data)
+    answer = Answer.objects.create(self.cleaned_data)
     answer.save()
     return answer
