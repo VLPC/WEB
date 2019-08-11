@@ -95,4 +95,5 @@ def ask(request):
 			
 	else:
 		form = AskForm()
-		return render(request, 'question_add.html', {'form' : form})
+	
+	return render(request, 'question_add.html', {'form' : form})
