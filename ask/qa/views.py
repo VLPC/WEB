@@ -79,8 +79,7 @@ def question_details(request, pk):
 			
 	else: 
 		form = AnswerForm()
-	
-	return render(request, 'details.html',
+		return render(request, 'details.html',
 		{'questions' : qs,
 		'answers' : answers,
 		'form' : form})
