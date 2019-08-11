@@ -18,6 +18,9 @@ class Question(models.Model):
 	
 	def __str__(self) :
     		return self.title
+	
+	def get_url(self):
+		return reverse('question-detail', kwargs={'pk': self.pk})
 
 class Answer(models.Model):
 	text = models.TextField(default="")
@@ -27,4 +30,6 @@ class Answer(models.Model):
 	
 	def __str__(self) :
 		return self.title
-
+	
+	def get_url(self):
+		return reverse('question-detail', kwargs={'pk': self.pk})
