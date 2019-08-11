@@ -5,7 +5,7 @@ class AskForm(forms.Form):
   text = forms.CharField(widget=forms.Textarea)
   
   def save(self):
-    question = Question(**self.cleaned_data)
+    question = Question(self.cleaned_data)
     question.save()
     return question
 
