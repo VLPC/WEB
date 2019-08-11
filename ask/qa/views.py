@@ -62,9 +62,7 @@ def popular_questions(request):
 	
 	return render(request, 'popular.html',{'page': page,})
 
-def question_details(request, pk):
-	if request.method == 'POST':
-		
+def question_details(request, pk):		
 	try:
 		qs = Question.objects.get(id = pk)
 	except Question.DoesNotExist:
