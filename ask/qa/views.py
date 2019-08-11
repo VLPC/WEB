@@ -77,14 +77,13 @@ def question_details(request, pk):
 			url = answer.get_url()
 			return HttpResponseRedirect(url)
 			
-	else:
+	else: 
 		form = AnswerForm()
 	
 	return render(request, 'details.html',
 		{'questions' : qs,
 		'answers' : answers,
-		'form' : form}
-	)
+		'form' : form})
 
 def ask(request):
 	if request.method == 'POST':
