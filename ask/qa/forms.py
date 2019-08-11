@@ -7,7 +7,6 @@ class AskForm(forms.Form):
   
   def save(self):
     question = Question.objects.create(**self.cleaned_data)
-    question.save()
     return question
 
 AnswerForm(forms.Form):
@@ -16,5 +15,4 @@ AnswerForm(forms.Form):
   
   def save(self):
     answer = Answer.objects.create(**self.cleaned_data)
-    answer.save()
     return answer
