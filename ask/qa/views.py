@@ -60,7 +60,7 @@ def popular_questions(request):
 	except EmptyPage:
 		page = paginator.page(paginator.num_pages)
 	
-	return render(request, 'popular.html',{'page': page,})
+	return render(request, 'popular.html',{'page': page})
 
 def question_details(request, pk):		
 	try:
