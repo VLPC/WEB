@@ -72,9 +72,20 @@ def question_details(request, pk):
 	
 	answers = qs.answer_set.all()
 	
+	if request.method == 'POST':
+		form = AnswerForm(request.POST)
+		if form.is_valid():
+			answer = form.save()
+			url = answer.get_url()
+			return HttpResponseRedirect(url)
+			
+	else:
+		form = AnswerForm()
+	
 	return render(request, 'details.html',
 		{'questions' : qs,
-		'answers' : answers}
+		'answers' : answers,
+		'form' : form}
 	)
 
 def ask(request):
