@@ -74,3 +74,6 @@ def question_details(request, pk):
 		{'questions' : qs,
 		'answers' : answers}
 	)
+
+def ask(request):
+	
