@@ -12,7 +12,7 @@ class AskForm(forms.Form):
     question.save()
     return question
 
-AnswerForm
+AnswerForm(forms.Form):
   text = forms.CharField(widget=forms.Textarea)
   question = forms.IntegerField(widget=forms.HiddenInput)
   
