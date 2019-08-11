@@ -1,8 +1,8 @@
 from django import forms
 
 class AskForm(forms.Form):
-  title = forms.CharField(max_length = 120)
-  text = forms.CharField(widget = forms.Textarea)
+  title = forms.CharField(max_length=120)
+  text = forms.CharField(widget=forms.Textarea)
   
   def clean(self):
     pass
@@ -13,7 +13,7 @@ class AskForm(forms.Form):
     return question
 
 AnswerForm
-  text = forms.CharField(widget = forms.Textarea)
+  text = forms.CharField(widget=forms.Textarea)
   question = forms.IntegerField(widget=forms.HiddenInput)
   
   def clean(self):
