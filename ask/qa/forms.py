@@ -46,7 +46,6 @@ class AnswerForm(forms.Form):
 		return question
 	
 	def save(self):
-		self.cleaned_data['question'] = get_object_or_404(Question, pk=self.cleaned_data['question'])
 		if self._user.is_anonymous():
 			self.cleaned_data['author_id'] = 1
 		else:
