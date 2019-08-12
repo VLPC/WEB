@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage
 from qa.models import Question, Answer
-from qa.forms import AskForm, AnswerForm
+from qa.forms import AskForm, AnswerForm, SignupForm, LoginForm
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 
