@@ -79,7 +79,7 @@ def question_details(request, pk):
 			return HttpResponseRedirect(url)
 			
 	else: 
-		form = AnswerForm(initial = {'question': pk})
+		form = AnswerForm(initial = {'question': qs.id})
 	
 	return render(request, 'details.html',
 		      {'questions' : qs,
