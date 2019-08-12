@@ -100,3 +100,9 @@ def ask(request):
 		form = AskForm()
 	
 	return render(request, 'question_add.html', {'form' : form})
+
+def signup(request):
+	if request.method == 'POST':
+	else:
+		form = AskForm()
+	return render(request, 'question_add.html', {'form' : form})
