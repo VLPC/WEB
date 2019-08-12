@@ -107,8 +107,7 @@ def signup(request):
 		if form.is_valid():
 			form._user = request.user
 			user = form.save()
-			url = user.get_url()
-			return HttpResponseRedirect(url)
+			return HttpResponseRedirect('/')
 	else:
 		form = SignupForm()
 	return render(request, 'signup.html', {'form' : form})
@@ -119,8 +118,7 @@ def login(request):
 		if form.is_valid():
 			form._user = request.user
 			user = form.save()
-			url = user.get_url()
-			return HttpResponseRedirect(url)
+			return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
 	return render(request, 'login.html', {'form' : form})
