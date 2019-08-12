@@ -55,6 +55,7 @@ class AnswerForm(forms.Form):
             self.cleaned_data['author_id'] = 1
         else:
             self.cleaned_data['author'] = self._user
+	
 	answer = Answer(**self.cleaned_data)
-        answer.save()
+	answer.save()
 	return answer
