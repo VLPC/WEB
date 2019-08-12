@@ -1,5 +1,6 @@
 from django import forms
 from qa.models import Question, Answer
+from django.shortcuts import get_object_or_404
 
 class AskForm(forms.Form):
     title = forms.CharField(max_length=255)
@@ -49,13 +50,11 @@ class AnswerForm(forms.Form):
 
     
     def save(self):
-        self.cleaned_data['question'] = get_object_or_404(
-            Question,
-            pk=self.cleaned_data['question'])
+        self.cleaned_data['question'] = get_object_or_404(Question,pk=self.cleaned_data['question'])
         if self._user.is_anonymous():
             self.cleaned_data['author_id'] = 1
         else:
             self.cleaned_data['author'] = self._user
-	          answer = Answer(**self.cleaned_data)
-            answer.save()
-          	return answer
+	answer = Answer(**self.cleaned_data)
+        answer.save()
+	return answer
