@@ -76,7 +76,7 @@ def question_details(request, pk):
 		if form.is_valid():
 			answer = form.save()
 			url = answer.get_url()
-			return HttpResponseRedirect(url)
+			return HttpResponse('OK')
 			
 	else: 
 		form = AnswerForm(initial = {'question': pk})
