@@ -52,3 +52,8 @@ class AnswerForm(forms.Form):
 		answer = Answer(**self.cleaned_data)
 		answer.save()
 		return answer
+	
+class SignupForm(forms.Form):
+	username
+	email
+	password
