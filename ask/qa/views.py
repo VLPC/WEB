@@ -103,6 +103,12 @@ def ask(request):
 
 def signup(request):
 	if request.method == 'POST':
+		form = SignupForm(request.POST)
+		if form.is_valid():
+			form._user = request.user
+			user = form.save()
+			url = user.get_url()
+			return HttpResponseRedirect(url)
 	else:
-		form = AskForm()
+		form = SignupForm()
 	return render(request, 'question_add.html', {'form' : form})
