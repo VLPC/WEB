@@ -111,4 +111,16 @@ def signup(request):
 			return HttpResponseRedirect(url)
 	else:
 		form = SignupForm()
-	return render(request, 'question_add.html', {'form' : form})
+	return render(request, 'signup.html', {'form' : form})
+
+def login(request):
+	if request.method == 'POST':
+		form = LoginForm(request.POST)
+		if form.is_valid():
+			form._user = request.user
+			user = form.save()
+			url = user.get_url()
+			return HttpResponseRedirect(url)
+	else:
+		form = LoginForm()
+	return render(request, 'login.html', {'form' : form})
