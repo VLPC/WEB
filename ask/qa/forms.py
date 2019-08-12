@@ -1,6 +1,5 @@
 from django import forms
 from qa.models import Question, Answer
-from django.shortcuts import get_object_or_404
 
 class AskForm(forms.Form):
 	title = forms.CharField(max_length=255)
