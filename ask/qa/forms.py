@@ -76,6 +76,11 @@ class SignupForm(forms.Form):
 			raise forms.ValidationError('Password is empty', code='validation_error')
 		return password
 	
+	def save(self):
+		user = User(**self.cleaned_data)
+		user.save()
+		return user
+	
 class LoginForm(forms.Form):
 	username = forms.CharField(max_length=255)
 	password = forms.PasswordField()
@@ -91,3 +96,8 @@ class LoginForm(forms.Form):
 		if password.strip() == '':
 			raise forms.ValidationError('Password is empty', code='validation_error')
 		return password
+	
+	def save(self):
+		user = User(**self.cleaned_data)
+		user.save()
+		return user
