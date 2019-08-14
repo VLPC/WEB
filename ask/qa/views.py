@@ -103,11 +103,13 @@ def ask(request):
 
 def signup(request):
 	if request.method == 'POST':
-		form = SignupForm(request.POST)
-		if form.is_valid():
-			form._user = request.user
-			user = form.save()
-			return HttpResponseRedirect('/')
+		login = request.POST.get('login')
+		password = request.POST.get('password')
+		sessionid = do_login(login, password)
+		if sessionid:
+			response = HttpResponseRedirect('/')
+			response.set_cookie('sessionid', sessionid)
+			return response
 	else:
 		form = SignupForm()
 	return render(request, 'signup.html', {'form' : form})
