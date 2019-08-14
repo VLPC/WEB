@@ -117,7 +117,7 @@ def login(request):
 	if request.method == 'POST':
 		login = request.POST.get('login')
 		password = request.POST.get('password')
-		url = '/'
+		url = request.POST.get('continue', '/')
 		sessid = do_login(login, password)
 		if sessid:
 			response = HttpResponseRedirect(url)
