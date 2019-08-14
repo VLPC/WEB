@@ -117,12 +117,11 @@ def login(request):
 	if request.method == 'POST':
 		login = request.POST.get('login')
 		password = request.POST.get('password')
-		url = request.POST.get('continue', '/')
-		sessid = do_login(login, password)
-		if sessid:
-			response = HttpResponseRedirect(url)
-			response.set_cookie('sessid', sessid)
+		sessionid = do_login(login, password)
+		if sessionid:
+			response = HttpResponseRedirect('/')
+			response.set_cookie('sessionid', sessionid)
 			return response
-		else:
-			error = 'Wrong login/password'
-	return render(request, 'login.html', {'error' : error})
+	else:
+		form = LoginForm()
+	return render(request, 'login.html', {'form' : form})
