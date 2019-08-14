@@ -113,12 +113,16 @@ def signup(request):
 	return render(request, 'signup.html', {'form' : form})
 
 def login(request):
+	error = ''
 	if request.method == 'POST':
-		form = LoginForm(request.POST)
-		if form.is_valid():
-			form._user = request.user
-			user = form.save()
-			return HttpResponseRedirect('/')
-	else:
-		form = LoginForm()
-	return render(request, 'login.html', {'form' : form})
+		login = request.POST.get('login')
+		password = request.POST.get('password')
+		url = '/'
+		sessid = do_login(login, password)
+		if sessid:
+			response = HttpResponseRedirect(url)
+			response.set_cookie('sessid', sessid)
+			return response
+		else:
+			error = 'Wrong login/password'
+	return render(request, 'login.html', {'error' : error})
