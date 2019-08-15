@@ -114,7 +114,7 @@ def signup(request):
 		form = SignupForm()
 	return render(request, 'signup.html', {'form' : form})
 
-def login(request):
+def login_view(request):
 	error = ''
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
