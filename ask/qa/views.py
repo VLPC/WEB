@@ -7,7 +7,7 @@ from qa.models import Question, Answer
 from qa.forms import AskForm, AnswerForm, SignupForm, LoginForm
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
@@ -104,6 +104,13 @@ def ask(request):
 
 def signup(request):
 	if request.method == 'POST':
+		form = SignupForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login = user.cleaned_data["username"]
+			password = user.cleaned_data["password"]
+			user = authenticate(username = 'login', password = 'password')
+			return HttpResponseRedirect('/')
 	else:
 		form = SignupForm()
 	return render(request, 'signup.html', {'form' : form})
