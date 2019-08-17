@@ -98,3 +98,7 @@ class LoginForm(forms.Form):
 		if password.strip() == '':
 			raise forms.ValidationError('Password is empty', code='validation_error')
 		return password
+	
+	def save(self):
+		user = authenticate(**self.cleaned_data)
+		return user
