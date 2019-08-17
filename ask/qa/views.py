@@ -121,9 +121,9 @@ def login_view(request):
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password']
 			user = authenticate(username = username, password = password)
-			if user is not None:
+			if user is not None and user.is_active:
 				login(request, user)
-				request.set_cookie('sessionid')
+				request.session["sessionid"] = '1'
 			return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
