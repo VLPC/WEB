@@ -118,9 +118,7 @@ def login_view(request):
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
 		if form.is_valid():
-			username = form.cleaned_data['username']
-			password = form.cleaned_data['password']
-			user = authenticate(username = username, password = password)
+			user = form.save()
 			if user is not None:
 				login(request, user)
 				request.session['sessionid'] = user.id
