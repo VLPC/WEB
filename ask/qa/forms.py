@@ -81,8 +81,7 @@ class SignupForm(forms.Form):
 	def save(self):
 		user = User(**self.cleaned_data)
 		user.save()
-		auth = authenticate(**self.cleaned_data)
-		return auth
+		return user
 	
 class LoginForm(forms.Form):
 	username = forms.CharField(max_length=255)
