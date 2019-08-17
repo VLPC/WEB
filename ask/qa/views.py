@@ -109,7 +109,7 @@ def signup(request):
 			user = form.save()
 			if user is not None:
 				login(request, user)
-			return HttpResponseRedirect('/')
+				return HttpResponseRedirect('/')
 	else:
 		form = SignupForm()
 	return render(request, 'signup.html', {'form' : form})
@@ -123,8 +123,8 @@ def login_view(request):
 			user = authenticate(username = username, password = password)
 			if user is not None:
 				login(request, user)
-			request.session['sessionid'] = user.id
-			return HttpResponseRedirect('/')
+				request.session['sessionid'] = user.id
+				return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
 	return render(request, 'login.html', {'form' : form})
