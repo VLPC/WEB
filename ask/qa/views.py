@@ -122,8 +122,8 @@ def login_view(request):
 			password = form.cleaned_data['password']
 			user = authenticate(username = username, password = password)
 			if user is not None:
-				sessionid = login(request, user)
-				request.COOKIE.get('sessionid') = sessionid
+				login(request, user)
+				sessionid = request.COOKIE.get('sessionid')
 			return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
