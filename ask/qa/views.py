@@ -118,9 +118,9 @@ def login_view(request):
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
 		if form.is_valid():
-			user = form.save()
-			if user is not None:
-				login(request, user)
+			sessionid = form.save()
+			if sessionid is not None:
+				login(request, sessionid)
 				return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
