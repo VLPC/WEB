@@ -126,4 +126,4 @@ def login_view(request):
 			return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
-	return render(request, 'login.html', {'form' : form})
+	return render(request, 'login.html', {'form' : form, 'session': request.session})
