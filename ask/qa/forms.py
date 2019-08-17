@@ -1,6 +1,7 @@
 from django import forms
 from qa.models import Question, Answer
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 class AskForm(forms.Form):
 	title = forms.CharField(max_length=255)
@@ -80,7 +81,8 @@ class SignupForm(forms.Form):
 	def save(self):
 		user = User(**self.cleaned_data)
 		user.save()
-		return user
+		auth = authenticate(**self.cleaned_data)
+		return auth
 	
 class LoginForm(forms.Form):
 	username = forms.CharField(max_length=255)
@@ -99,6 +101,5 @@ class LoginForm(forms.Form):
 		return password
 	
 	def save(self):
-		user = User(**self.cleaned_data)
-		user.save()
-		return user
+		auth = authenticate(**self.cleaned_data)
+		return auth
