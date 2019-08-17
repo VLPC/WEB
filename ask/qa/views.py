@@ -119,7 +119,7 @@ def login_view(request):
 		form = LoginForm(request.POST)
 		if form.is_valid():
 			sessionid = form.save()
-			if sessionid is not None:
+			if sessionid:
 				login(request, sessionid)
 				return HttpResponseRedirect('/')
 	else:
