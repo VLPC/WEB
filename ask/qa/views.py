@@ -124,8 +124,9 @@ def login_view(request):
 			if user is not None:
 				if user.is_active:
 					login(request, user)
-			request.session.get('sessionid')
-			return HttpResponseRedirect('/')
+			response = HttpResponseRedirect('/')
+			set_cookie(response, 'sessionid')
+			return response
 	else:
 		form = LoginForm()
 	return render(request, 'login.html', {'form' : form})
