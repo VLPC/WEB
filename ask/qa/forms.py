@@ -56,9 +56,9 @@ class AnswerForm(forms.Form):
 		return answer
 	
 class SignupForm(forms.Form):
-	username = forms.CharField(max_length=255)
-	email = forms.EmailField()
-	password = forms.CharField(widget=forms.PasswordInput)
+	username = forms.CharField(max_length=255, required=False)
+	email = forms.EmailField(required=False)
+	password = forms.CharField(widget=forms.PasswordInput, required=False)
 	
 	def clean_username(self):
 		username = self.cleaned_data['username']
@@ -84,8 +84,8 @@ class SignupForm(forms.Form):
 		return user
 	
 class LoginForm(forms.Form):
-	username = forms.CharField(max_length=255, unique=False)
-	password = forms.CharField(widget=forms.PasswordInput)
+	username = forms.CharField(max_length=255, required=False)
+	password = forms.CharField(widget=forms.PasswordInput, required=False)
 	
 	def clean_username(self):
 		username = self.cleaned_data['username']
