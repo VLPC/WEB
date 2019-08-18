@@ -123,7 +123,7 @@ def login_view(request):
 			user = authenticate(username=username, password=password)
 			if user is not None:
 				login(request, user)
-			login(request)
+			login(request, request.user)
 			return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
