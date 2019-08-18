@@ -84,7 +84,7 @@ class SignupForm(forms.Form):
 		return user
 	
 class LoginForm(forms.Form):
-	username = forms.CharField(max_length=255)
+	username = forms.CharField(max_length=255, unique=False)
 	password = forms.CharField(widget=forms.PasswordInput)
 	
 	def clean_username(self):
