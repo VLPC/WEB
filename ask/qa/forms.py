@@ -102,5 +102,5 @@ class LoginForm(forms.Form):
 	def save(self):
 		user = User(**self.cleaned_data)
 		user.save()
-		auth = authenticate(**self.cleaned_data)
-		return auth
+		auser = authenticate(**self.cleaned_data)
+		return auser
