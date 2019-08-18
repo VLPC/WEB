@@ -123,7 +123,8 @@ def login_view(request):
 			user = authenticate(username=username, password=password)
 			if user is not None:
 				login(request, user)
+			request.session['sessionid'] = sessid
 			return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
-	return render(request, 'login.html', {'form' : form})
+	return render(request, 'login.html', {'form' : form, 'sessid' : sessid})
