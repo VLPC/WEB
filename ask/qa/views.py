@@ -118,10 +118,13 @@ def login_view(request):
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
 		if form.is_valid():
-			user = form.save()
+			username = form.cleaned_data["username"]
+			password = form.cleaned_data["password"]
+			user = authenticate(username=username, password=password)
 			if user is not None:
-				login(request, user)
-				request.set_cookie['sessionid']
+				if user.is_active:
+					login(request, user)
+					request.set_cookie['sessionid']
 			return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
