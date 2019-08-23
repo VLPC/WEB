@@ -125,7 +125,8 @@ def login_view(request):
 				login(request, user)
 			response = HttpResponse('hello')
 			response.set_cookie('sessionid', 'sessionid')
-			return HttpResponseRedirect('/')
+			return response
+			#return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
 	return render(request, 'login.html', {'form' : form})
