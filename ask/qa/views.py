@@ -123,7 +123,7 @@ def login_view(request):
 			user = authenticate(username=username, password=password)
 			if user is not None:
 				login(request, user)
-			HttpResponse.set_cookie(sessionid, value='1')
+			HttpResponse.set_cookie('sessionid')
 			return HttpResponseRedirect('/')
 	else:
 		form = LoginForm()
